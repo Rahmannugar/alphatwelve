@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { ThemeProvider, createTheme, CssBaseline, Button } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import Header from "./components/Header";
 
 const App = () => {
   const [mode, setMode] = useState(() => {
@@ -27,11 +28,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div style={{ padding: "20px" }}>
-        <h1>Welcome to AlphaTwelve</h1>
-        <Button variant="contained" color="primary" onClick={toggleMode}>
-          Toggle Theme
-        </Button>
+      <div>
+        <Header />
       </div>
     </ThemeProvider>
   );
