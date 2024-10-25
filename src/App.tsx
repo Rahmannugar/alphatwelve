@@ -12,7 +12,7 @@ const App = () => {
     palette: {
       mode: mode ? "light" : "dark",
       background: {
-        default: mode ? "rgba(252, 247, 255, 1)" : "rgba(72, 69, 84, 1)",
+        default: mode ? "rgba(252, 247, 255, 1)" : "rgba(56, 53, 68, 1)",
       },
     },
   });
