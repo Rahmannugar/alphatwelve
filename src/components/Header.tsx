@@ -90,14 +90,14 @@ const Header = () => {
     },
   ];
   return (
-    <div className="px-5 lg:py-9 lg:px-7">
+    <div className="px-5 lg:py-9 py-8 lg:px-7">
       <h1 className="text-[17px] lg:text-[22px]">
         Welcome! here’s your summary
       </h1>
-      <div className="md:flex flex-wrap space-x-5 mt-10 items-center">
+      <div className=" flex flex-col justify-center space-y-4 items-center mt-10 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-4 lg:grid-cols-4">
         {layers.map((layer) => (
           <div
-            className="w-[260px] h-[88px] p-4 cursor-pointer space-y-1"
+            className=" w-[100%] h-[88px] p-4 cursor-pointer space-y-1"
             style={{
               border: "1px solid rgba(72, 69, 84, 1)",
               backgroundColor: "rgba(72, 69, 84, 1)",
@@ -151,9 +151,6 @@ const Header = () => {
           </div>
         ))}
       </div>
-
-
-      
     </div>
   );
 };
