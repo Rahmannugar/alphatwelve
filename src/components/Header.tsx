@@ -97,7 +97,7 @@ const Header = () => {
       <div className=" flex flex-col justify-center space-y-4 items-center mt-10 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-4 lg:grid-cols-4">
         {layers.map((layer) => (
           <div
-            className=" w-[100%] h-[88px] p-4 cursor-pointer space-y-1"
+            className=" w-full h-[88px] max-w-[400px] p-4 cursor-pointer space-y-1"
             style={{
               border: "1px solid rgba(72, 69, 84, 1)",
               backgroundColor: "rgba(72, 69, 84, 1)",

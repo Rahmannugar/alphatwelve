@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
 
 const App = () => {
   const [mode, setMode] = useState(() => {
@@ -28,7 +29,8 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
+      <div className="md:flex">
+        <Sidebar />
         <Header />
       </div>
     </ThemeProvider>
