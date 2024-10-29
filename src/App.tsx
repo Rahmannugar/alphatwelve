@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import "./App.css";
 
 const App = () => {
   const [mode, setMode] = useState(() => {
@@ -13,7 +14,7 @@ const App = () => {
     palette: {
       mode: mode ? "light" : "dark",
       background: {
-        default: mode ? "rgba(252, 247, 255, 1)" : "rgba(56, 53, 68, 1)",
+        default: mode ? "rgba(252, 255, 255, 1)" : "rgba(56, 53, 68, 1)",
       },
     },
   });
@@ -30,8 +31,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <div className="md:flex">
-        <Sidebar />
-        <Header />
+        <Sidebar toggleMode={toggleMode} mode={mode} />
+        <Header mode={mode} />
       </div>
     </ThemeProvider>
   );
