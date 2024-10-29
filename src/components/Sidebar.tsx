@@ -198,6 +198,10 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
       ),
     },
   ];
+  const itemVariants = {
+    hidden: { opacity: 0, x: "-100%" },
+    visible: { opacity: 1, x: 0 },
+  };
   return (
     <motion.div
       className={`${
@@ -205,10 +209,17 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
       }`}
       initial={{ width: 70 }}
       animate={{ width: hidden ? 70 : 250 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
     >
       {hidden ? (
         <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={itemVariants}
+          transition={{
+            delay: 0.6,
+            staggerChildren: 0.1,
+          }}
           className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4`}
         >
           {menuItems.map((item) => (
@@ -325,6 +336,13 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
         </motion.div>
       ) : (
         <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={itemVariants}
+          transition={{
+            delay: 0.6,
+            staggerChildren: 0.1,
+          }}
           className={`scrollbar hidden h-screen overflow-y-auto md:flex md:flex-col px-2 py-16 space-y-4`}
         >
           {menuItems.map((item) => (
