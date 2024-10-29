@@ -8,7 +8,7 @@ interface Props {
 
 const Sidebar = ({ toggleMode, mode }: Props) => {
   const [activeItem, setActiveItem] = useState<null | number>(null);
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   const hideSidebar = () => {
     setHidden(!hidden);
@@ -199,12 +199,17 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
     },
   ];
   return (
-    <motion.div>
+    <motion.div
+      className={`${
+        mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
+      }`}
+      initial={{ width: 70 }}
+      animate={{ width: hidden ? 70 : 250 }}
+      transition={{ duration: 0.6 }}
+    >
       {hidden ? (
         <motion.div
-          className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4 ${
-            mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
-          }`}
+          className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4`}
         >
           {menuItems.map((item) => (
             <div
@@ -217,7 +222,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
             </div>
           ))}
 
-          {/* Collapse */}
+          {/* Expand */}
           <div
             onClick={hideSidebar}
             className={`py-3 px-3 cursor-pointer ${
@@ -320,9 +325,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
         </motion.div>
       ) : (
         <motion.div
-          className={`scrollbar hidden h-screen overflow-y-auto w-[240px] md:flex md:flex-col px-2 py-16 space-y-4 ${
-            mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
-          }`}
+          className={`scrollbar hidden h-screen overflow-y-auto md:flex md:flex-col px-2 py-16 space-y-4`}
         >
           {menuItems.map((item) => (
             <div
