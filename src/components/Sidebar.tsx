@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { motion } from "framer-motion";
 
 interface Props {
   toggleMode: any;
@@ -199,9 +199,9 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
     },
   ];
   return (
-    <div>
+    <motion.div>
       {hidden ? (
-        <div
+        <motion.div
           className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4 ${
             mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
           }`}
@@ -220,7 +220,9 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
           {/* Collapse */}
           <div
             onClick={hideSidebar}
-            className="py-3 px-3 cursor-pointer hover:bg-white w-fit hover:text-black rounded-full"
+            className={`py-3 px-3 cursor-pointer ${
+              mode ? "hover:bg-[#f1f1f3]" : "hover:bg-white"
+            } w-fit hover:text-black rounded-full`}
           >
             {mode ? (
               <svg
@@ -232,7 +234,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               >
                 <path
                   d="M9.37498 7.29166L6.45831 10L9.37498 12.7083M13.5416 7.29166L10.625 10L13.5416 12.7083"
-                  stroke="#64748B"
+                  stroke="#ADA9BB"
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -248,7 +250,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               >
                 <path
                   d="M9.37492 7.29166L6.45825 10L9.37492 12.7083M13.5416 7.29166L10.6249 10L13.5416 12.7083"
-                  stroke="white"
+                  stroke="#ADA9BB"
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -315,9 +317,9 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               </defs>
             </svg>
           </div>
-        </div>
+        </motion.div>
       ) : (
-        <div
+        <motion.div
           className={`scrollbar hidden h-screen overflow-y-auto w-[240px] md:flex md:flex-col px-2 py-16 space-y-4 ${
             mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
           }`}
@@ -345,7 +347,11 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
           {/* Collapse */}
           <div
             onClick={hideSidebar}
-            className="flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer"
+            className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer ${
+              mode
+                ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
+                : "hover:bg-gray-300 hover:text-black text-white"
+            }`}
           >
             {mode ? (
               <svg
@@ -357,7 +363,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               >
                 <path
                   d="M9.37498 7.29166L6.45831 10L9.37498 12.7083M13.5416 7.29166L10.625 10L13.5416 12.7083"
-                  stroke="#64748B"
+                  stroke="#ADA9BB"
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -373,7 +379,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               >
                 <path
                   d="M9.37492 7.29166L6.45825 10L9.37492 12.7083M13.5416 7.29166L10.6249 10L13.5416 12.7083"
-                  stroke="white"
+                  stroke="#ADA9BB"
                   stroke-width="1.5"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -381,17 +387,17 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               </svg>
             )}
 
-            <h1
-              className={`${mode ? "text-[rgba(51,65,85,1)]" : "text-white"}`}
-            >
-              Collapse
-            </h1>
+            <h1>Collapse</h1>
           </div>
 
           {/* Switch */}
           <div
             onClick={toggleMode}
-            className="flex items-center space-x-3  px-3 text-xs cursor-pointer"
+            className={`flex items-center space-x-3 py-3 px-3 text-xs cursor-pointer ${
+              mode
+                ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
+                : "hover:bg-gray-300 hover:text-black text-white"
+            }`}
           >
             {mode ? (
               <svg
@@ -417,15 +423,17 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
               </svg>
             )}
 
-            <h1
-              className={`${mode ? "text-[rgba(51,65,85,1)]" : "text-white"}`}
-            >
-              Dark mode
-            </h1>
+            <h1>Dark mode</h1>
           </div>
 
           {/* Profile */}
-          <div className="flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer">
+          <div
+            className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer ${
+              mode
+                ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
+                : "hover:bg-gray-300 hover:text-black text-white"
+            }`}
+          >
             <svg
               width="34"
               height="34"
@@ -481,18 +489,14 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
                 </clipPath>
               </defs>
             </svg>
-            <div
-              className={`text-xs ${
-                mode ? "text-[rgba(51,65,85,1)]" : "text-white"
-              }`}
-            >
+            <div className={`text-xs`}>
               <h1>Rudra Devi</h1>
               <h2>rudra.devi@gmail.com</h2>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 export default Sidebar;
