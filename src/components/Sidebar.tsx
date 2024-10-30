@@ -204,7 +204,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
   };
   return (
     <motion.div
-      className={`${
+      className={` ${
         mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
       }`}
       initial={{ width: 70 }}
@@ -217,7 +217,6 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
           animate="visible"
           variants={itemVariants}
           transition={{
-            delay: 0.6,
             staggerChildren: 0.1,
           }}
           className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4`}
@@ -225,6 +224,7 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
           {menuItems.map((item) => (
             <div
               key={item.id}
+              onClick={hideSidebar}
               className={`py-3 px-3 cursor-pointer w-fit ${
                 mode ? "hover:bg-[#f1f1f3]" : "hover:bg-white"
               } rounded-full`}
@@ -340,7 +340,6 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
           animate="visible"
           variants={itemVariants}
           transition={{
-            delay: 0.6,
             staggerChildren: 0.1,
           }}
           className={`scrollbar hidden h-screen overflow-y-auto md:flex md:flex-col px-2 py-16 space-y-4`}

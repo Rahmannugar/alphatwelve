@@ -3,6 +3,7 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import "./App.css";
+import Chart from "./components/Chart";
 
 const App = () => {
   const [mode, setMode] = useState(() => {
@@ -30,9 +31,12 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="md:flex">
+      <div className="md:flex relative">
         <Sidebar toggleMode={toggleMode} mode={mode} />
-        <Header mode={mode} />
+        <div>
+          <Header mode={mode} />
+          <Chart mode={mode} />
+        </div>
       </div>
     </ThemeProvider>
   );
