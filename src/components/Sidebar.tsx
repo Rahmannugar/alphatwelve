@@ -204,318 +204,339 @@ const Sidebar = ({ toggleMode, mode }: Props) => {
   };
   return (
     <motion.div
-      className={` ${
-        mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
-      }`}
-      initial={{ width: 70 }}
-      animate={{ width: hidden ? 70 : 250 }}
+      className={`relative`}
+      initial={{ paddingRight: 70 }}
+      animate={{ paddingRight: hidden ? 70 : 250 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      {hidden ? (
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={itemVariants}
-          transition={{
-            staggerChildren: 0.1,
-          }}
-          className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4`}
-        >
-          {menuItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={hideSidebar}
-              className={`py-3 px-3 cursor-pointer w-fit ${
-                mode ? "hover:bg-[#f1f1f3]" : "hover:bg-white"
-              } rounded-full`}
-            >
-              {item.svg}
-            </div>
-          ))}
-
-          {/* Expand */}
-          <div
-            onClick={hideSidebar}
-            className={`py-3 px-3 cursor-pointer ${
-              mode ? "hover:bg-[#f1f1f3]" : "hover:bg-white"
-            } w-fit hover:text-black rounded-full`}
+      <motion.div
+        className={`fixed ${
+          mode ? "bg-white border border-[#e6e6ed]" : "bg-[rgba(72,69,84,1)]"
+        }`}
+        initial={{ width: 70 }}
+        animate={{ width: hidden ? 70 : 250 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+        {hidden ? (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={itemVariants}
+            transition={{
+              staggerChildren: 0.1,
+            }}
+            className={`scrollbar hidden h-screen overflow-y-auto w-[70px] md:flex md:flex-col justify-center items-center py-16 space-y-4`}
           >
-            {mode ? (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            {menuItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={hideSidebar}
+                className={`py-3 px-3 cursor-pointer w-fit ${
+                  mode ? "hover:bg-[#f1f1f3]" : "hover:bg-white"
+                } rounded-full`}
               >
-                <path
-                  d="M9.37498 7.29166L6.45831 10L9.37498 12.7083M13.5416 7.29166L10.625 10L13.5416 12.7083"
-                  stroke="#ADA9BB"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            ) : (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.37492 7.29166L6.45825 10L9.37492 12.7083M13.5416 7.29166L10.6249 10L13.5416 12.7083"
-                  stroke="#ADA9BB"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            )}
-          </div>
+                {item.svg}
+              </div>
+            ))}
 
-          {/* Profile */}
-          <div className="px-3 text-sm cursor-pointer">
-            <svg
-              width="34"
-              height="34"
-              viewBox="0 0 34 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            {/* Expand */}
+            <div
+              onClick={hideSidebar}
+              className={`py-3 px-3 cursor-pointer ${
+                mode ? "hover:bg-[#f1f1f3]" : "hover:bg-white"
+              } w-fit hover:text-black rounded-full`}
             >
-              <g clipPath="url(#clip0_9606_357)">
-                <rect
-                  x="1"
-                  y="1"
-                  width="32"
-                  height="32"
-                  rx="16"
-                  fill="#F3F4F6"
-                />
-                <mask
-                  id="mask0_9606_357"
-                  style={{ maskType: "alpha" }}
-                  maskUnits="userSpaceOnUse"
-                  x="1"
-                  y="1"
-                  width="32"
-                  height="32"
+              {mode ? (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="17" cy="17" r="16" fill="#F1F5F9" />
-                </mask>
-                <g mask="url(#mask0_9606_357)">
                   <path
-                    d="M33 28.992V33.0013H1V29.0066C2.86127 26.5192 5.27721 24.5004 8.05572 23.1107C10.8342 21.721 13.8987 20.9987 17.0053 21.0013C23.544 21.0013 29.352 24.14 33 28.992ZM22.336 13C22.336 14.4144 21.7741 15.771 20.7739 16.7712C19.7737 17.7714 18.4172 18.3333 17.0027 18.3333C15.5882 18.3333 14.2316 17.7714 13.2314 16.7712C12.2312 15.771 11.6693 14.4144 11.6693 13C11.6693 11.5855 12.2312 10.2289 13.2314 9.22872C14.2316 8.22853 15.5882 7.66663 17.0027 7.66663C18.4172 7.66663 19.7737 8.22853 20.7739 9.22872C21.7741 10.2289 22.336 11.5855 22.336 13Z"
-                    fill="#CBD5E1"
+                    d="M9.37498 7.29166L6.45831 10L9.37498 12.7083M13.5416 7.29166L10.625 10L13.5416 12.7083"
+                    stroke="#ADA9BB"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </g>
-              </g>
-              <rect
-                x="0.5"
-                y="0.5"
-                width="33"
-                height="33"
-                rx="16.5"
-                stroke="#E2E8F0"
-              />
-              <defs>
-                <clipPath id="clip0_9606_357">
+                </svg>
+              ) : (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.37492 7.29166L6.45825 10L9.37492 12.7083M13.5416 7.29166L10.6249 10L13.5416 12.7083"
+                    stroke="#ADA9BB"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              )}
+            </div>
+
+            {/* Profile */}
+            <div className="px-3 text-sm cursor-pointer">
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clipPath="url(#clip0_9606_357)">
                   <rect
                     x="1"
                     y="1"
                     width="32"
                     height="32"
                     rx="16"
-                    fill="white"
+                    fill="#F3F4F6"
                   />
-                </clipPath>
-              </defs>
-            </svg>
-          </div>
-        </motion.div>
-      ) : (
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={itemVariants}
-          transition={{
-            staggerChildren: 0.1,
-          }}
-          className={`scrollbar hidden h-screen overflow-y-auto md:flex md:flex-col px-2 py-16 space-y-4`}
-        >
-          {menuItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setActiveItem(item.id)}
-              className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer transition-all
+                  <mask
+                    id="mask0_9606_357"
+                    style={{ maskType: "alpha" }}
+                    maskUnits="userSpaceOnUse"
+                    x="1"
+                    y="1"
+                    width="32"
+                    height="32"
+                  >
+                    <circle cx="17" cy="17" r="16" fill="#F1F5F9" />
+                  </mask>
+                  <g mask="url(#mask0_9606_357)">
+                    <path
+                      d="M33 28.992V33.0013H1V29.0066C2.86127 26.5192 5.27721 24.5004 8.05572 23.1107C10.8342 21.721 13.8987 20.9987 17.0053 21.0013C23.544 21.0013 29.352 24.14 33 28.992ZM22.336 13C22.336 14.4144 21.7741 15.771 20.7739 16.7712C19.7737 17.7714 18.4172 18.3333 17.0027 18.3333C15.5882 18.3333 14.2316 17.7714 13.2314 16.7712C12.2312 15.771 11.6693 14.4144 11.6693 13C11.6693 11.5855 12.2312 10.2289 13.2314 9.22872C14.2316 8.22853 15.5882 7.66663 17.0027 7.66663C18.4172 7.66663 19.7737 8.22853 20.7739 9.22872C21.7741 10.2289 22.336 11.5855 22.336 13Z"
+                      fill="#CBD5E1"
+                    />
+                  </g>
+                </g>
+                <rect
+                  x="0.5"
+                  y="0.5"
+                  width="33"
+                  height="33"
+                  rx="16.5"
+                  stroke="#E2E8F0"
+                />
+                <defs>
+                  <clipPath id="clip0_9606_357">
+                    <rect
+                      x="1"
+                      y="1"
+                      width="32"
+                      height="32"
+                      rx="16"
+                      fill="white"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={itemVariants}
+            transition={{
+              staggerChildren: 0.1,
+            }}
+            className={`scrollbar hidden h-screen overflow-y-auto md:flex md:flex-col px-2 py-16 space-y-4`}
+          >
+            {menuItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setActiveItem(item.id)}
+                className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer transition-all
                   ${
                     activeItem === item.id && !mode
                       ? "bg-[#8576ff]"
-                      : " hover:bg-white hover:text-black"
+                      : " hover:bg-gray-300 hover:text-[rgba(51,65,85,1)]"
                   }
             ${
               activeItem === item.id && mode
                 ? "text-[#8576ff] bg-[rgba(252,247,255,1)]"
-                : "hover:bg-gray-300"
+                : "hover:bg-white hover:text-black"
             }`}
+              >
+                {item.svg}
+                <h1>{item.label}</h1>
+              </div>
+            ))}
+            {/* Collapse */}
+            <div
+              onClick={hideSidebar}
+              className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer ${
+                mode
+                  ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
+                  : "hover:bg-white hover:text-black text-white"
+              }`}
             >
-              {item.svg}
-              <h1>{item.label}</h1>
-            </div>
-          ))}
-          {/* Collapse */}
-          <div
-            onClick={hideSidebar}
-            className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer ${
-              mode
-                ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
-                : "hover:bg-gray-300 hover:text-black text-white"
-            }`}
-          >
-            {mode ? (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.37498 7.29166L6.45831 10L9.37498 12.7083M13.5416 7.29166L10.625 10L13.5416 12.7083"
-                  stroke="#ADA9BB"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            ) : (
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.37492 7.29166L6.45825 10L9.37492 12.7083M13.5416 7.29166L10.6249 10L13.5416 12.7083"
-                  stroke="#ADA9BB"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            )}
-
-            <h1>Collapse</h1>
-          </div>
-
-          {/* Switch */}
-          <div
-            onClick={toggleMode}
-            className={`flex items-center space-x-3 py-3 px-3 text-xs cursor-pointer ${
-              mode
-                ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
-                : "hover:bg-gray-300 hover:text-black text-white"
-            }`}
-          >
-            {mode ? (
-              <svg
-                width="24"
-                height="16"
-                viewBox="0 0 24 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="24" height="16" rx="8" fill="#E2E8F0" />
-                <rect x="2" y="2" width="12" height="12" rx="6" fill="white" />
-              </svg>
-            ) : (
-              <svg
-                width="24"
-                height="16"
-                viewBox="0 0 24 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="24" height="16" rx="8" fill="#8576FF" />
-                <rect x="10" y="2" width="12" height="12" rx="6" fill="white" />
-              </svg>
-            )}
-
-            <h1>Dark mode</h1>
-          </div>
-
-          {/* Profile */}
-          <div
-            className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer ${
-              mode
-                ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
-                : "hover:bg-gray-300 hover:text-black text-white"
-            }`}
-          >
-            <svg
-              width="34"
-              height="34"
-              viewBox="0 0 34 34"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_9606_357)">
-                <rect
-                  x="1"
-                  y="1"
-                  width="32"
-                  height="32"
-                  rx="16"
-                  fill="#F3F4F6"
-                />
-                <mask
-                  id="mask0_9606_357"
-                  style={{ maskType: "alpha" }}
-                  maskUnits="userSpaceOnUse"
-                  x="1"
-                  y="1"
-                  width="32"
-                  height="32"
+              {mode ? (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="17" cy="17" r="16" fill="#F1F5F9" />
-                </mask>
-                <g mask="url(#mask0_9606_357)">
                   <path
-                    d="M33 28.992V33.0013H1V29.0066C2.86127 26.5192 5.27721 24.5004 8.05572 23.1107C10.8342 21.721 13.8987 20.9987 17.0053 21.0013C23.544 21.0013 29.352 24.14 33 28.992ZM22.336 13C22.336 14.4144 21.7741 15.771 20.7739 16.7712C19.7737 17.7714 18.4172 18.3333 17.0027 18.3333C15.5882 18.3333 14.2316 17.7714 13.2314 16.7712C12.2312 15.771 11.6693 14.4144 11.6693 13C11.6693 11.5855 12.2312 10.2289 13.2314 9.22872C14.2316 8.22853 15.5882 7.66663 17.0027 7.66663C18.4172 7.66663 19.7737 8.22853 20.7739 9.22872C21.7741 10.2289 22.336 11.5855 22.336 13Z"
-                    fill="#CBD5E1"
+                    d="M9.37498 7.29166L6.45831 10L9.37498 12.7083M13.5416 7.29166L10.625 10L13.5416 12.7083"
+                    stroke="#ADA9BB"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
                   />
-                </g>
-              </g>
-              <rect
-                x="0.5"
-                y="0.5"
-                width="33"
-                height="33"
-                rx="16.5"
-                stroke="#E2E8F0"
-              />
-              <defs>
-                <clipPath id="clip0_9606_357">
+                </svg>
+              ) : (
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.37492 7.29166L6.45825 10L9.37492 12.7083M13.5416 7.29166L10.6249 10L13.5416 12.7083"
+                    stroke="#ADA9BB"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              )}
+
+              <h1>Collapse</h1>
+            </div>
+
+            {/* Switch */}
+            <div
+              onClick={toggleMode}
+              className={`flex items-center space-x-3 py-3 px-3 text-xs cursor-pointer ${
+                mode
+                  ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
+                  : "hover:bg-white hover:text-black text-white"
+              }`}
+            >
+              {mode ? (
+                <svg
+                  width="24"
+                  height="16"
+                  viewBox="0 0 24 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="24" height="16" rx="8" fill="#E2E8F0" />
+                  <rect
+                    x="2"
+                    y="2"
+                    width="12"
+                    height="12"
+                    rx="6"
+                    fill="white"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="24"
+                  height="16"
+                  viewBox="0 0 24 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="24" height="16" rx="8" fill="#8576FF" />
+                  <rect
+                    x="10"
+                    y="2"
+                    width="12"
+                    height="12"
+                    rx="6"
+                    fill="white"
+                  />
+                </svg>
+              )}
+
+              <h1>Dark mode</h1>
+            </div>
+
+            {/* Profile */}
+            <div
+              className={`flex items-center space-x-3 py-3 px-3 text-sm cursor-pointer ${
+                mode
+                  ? "hover:bg-gray-300 text-[rgba(51,65,85,1)]"
+                  : "hover:bg-white hover:text-black text-white"
+              }`}
+            >
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clipPath="url(#clip0_9606_357)">
                   <rect
                     x="1"
                     y="1"
                     width="32"
                     height="32"
                     rx="16"
-                    fill="white"
+                    fill="#F3F4F6"
                   />
-                </clipPath>
-              </defs>
-            </svg>
-            <div className={`text-xs`}>
-              <h1>Rudra Devi</h1>
-              <h2>rudra.devi@gmail.com</h2>
+                  <mask
+                    id="mask0_9606_357"
+                    style={{ maskType: "alpha" }}
+                    maskUnits="userSpaceOnUse"
+                    x="1"
+                    y="1"
+                    width="32"
+                    height="32"
+                  >
+                    <circle cx="17" cy="17" r="16" fill="#F1F5F9" />
+                  </mask>
+                  <g mask="url(#mask0_9606_357)">
+                    <path
+                      d="M33 28.992V33.0013H1V29.0066C2.86127 26.5192 5.27721 24.5004 8.05572 23.1107C10.8342 21.721 13.8987 20.9987 17.0053 21.0013C23.544 21.0013 29.352 24.14 33 28.992ZM22.336 13C22.336 14.4144 21.7741 15.771 20.7739 16.7712C19.7737 17.7714 18.4172 18.3333 17.0027 18.3333C15.5882 18.3333 14.2316 17.7714 13.2314 16.7712C12.2312 15.771 11.6693 14.4144 11.6693 13C11.6693 11.5855 12.2312 10.2289 13.2314 9.22872C14.2316 8.22853 15.5882 7.66663 17.0027 7.66663C18.4172 7.66663 19.7737 8.22853 20.7739 9.22872C21.7741 10.2289 22.336 11.5855 22.336 13Z"
+                      fill="#CBD5E1"
+                    />
+                  </g>
+                </g>
+                <rect
+                  x="0.5"
+                  y="0.5"
+                  width="33"
+                  height="33"
+                  rx="16.5"
+                  stroke="#E2E8F0"
+                />
+                <defs>
+                  <clipPath id="clip0_9606_357">
+                    <rect
+                      x="1"
+                      y="1"
+                      width="32"
+                      height="32"
+                      rx="16"
+                      fill="white"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+              <div className={`text-xs`}>
+                <h1>Rudra Devi</h1>
+                <h2>rudra.devi@gmail.com</h2>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </motion.div>
     </motion.div>
   );
 };

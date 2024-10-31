@@ -32,7 +32,7 @@ const Chart = ({ mode }: Props) => {
     scales: {
       x: {
         ticks: {
-          color: mode ? "#000" : "#FFF",
+          color: mode ? "#64748B" : "#FFF",
         },
         grid: {
           color: mode ? "#E0E0E0" : "#FFF",
@@ -40,7 +40,7 @@ const Chart = ({ mode }: Props) => {
       },
       y: {
         ticks: {
-          color: mode ? "#000" : "#FFF",
+          color: mode ? "#64748B" : "#FFF",
         },
         grid: {
           color: mode ? "#E0E0E0" : "#FFF",
@@ -66,9 +66,9 @@ const Chart = ({ mode }: Props) => {
         Events Registration per month
       </h1>
       <div
-        className={`max-w-[554px] mt-3 w-full rounded-md ${
+        className={`lg:w-[554px] mt-3 w-full rounded-md ${
           mode ? "border-[#F2F2F7] border" : "bg-[#484554]"
-        } p-10`}
+        } md:p-7 p-4`}
         style={{ height: "320px" }}
       >
         <Bar data={chartData} options={options} />

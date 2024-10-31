@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import "./App.css";
 import Chart from "./components/Chart";
+import Image from "./components/Image";
 
 const App = () => {
   const [mode, setMode] = useState(() => {
@@ -31,11 +32,15 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="md:flex relative">
+      <div className="md:flex relative overflow-hidden">
         <Sidebar toggleMode={toggleMode} mode={mode} />
-        <div>
+
+        <div className="py-40">
           <Header mode={mode} />
-          <Chart mode={mode} />
+          <div className="md:flex justify-between items-center">
+            <Chart mode={mode} />
+            <Image />
+          </div>
         </div>
       </div>
     </ThemeProvider>
